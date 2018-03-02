@@ -53,7 +53,7 @@ describe Teaspoon::Driver.fetch(:selenium) do
     end
 
     it "waits for the specs to complete, setting the interval, timeout and message" do
-      hash = HashWithIndifferentAccess.new(client_driver: :firefox, timeout: 180, interval: 0.01, message: "Timed out")
+      hash = ActiveSupport::HashWithIndifferentAccess.new(client_driver: :firefox, timeout: 180, interval: 0.01, message: "Timed out")
       expect(Selenium::WebDriver::Wait).to receive(:new).with(hash)
       subject.run_specs(runner, "_url_")
     end
